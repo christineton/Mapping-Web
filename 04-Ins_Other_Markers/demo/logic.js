@@ -52,6 +52,6 @@ L.rectangle([
   [45.54, -122.61]
 ], {
   color: "black",
-  weight: 3,
+  weight: 40,
   stroke: true
 }).addTo(myMap);

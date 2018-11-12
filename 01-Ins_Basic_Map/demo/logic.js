@@ -3,6 +3,7 @@
 // This gets inserted into the div with an id of 'map'
 var myMap = L.map("map", {
   center: [45.52, -122.67],
+  // center:[37.773972, -122.431297],
   zoom: 13
 });
 

@@ -18,6 +18,34 @@ var cities = [
   }
 ];
 
+var otherCities = [
+  {
+    name: "New York",
+    location: [40.7128, -74.0059],
+    population: 8550405
+  },
+  {
+    name: "Chicago",
+    location: [41.8781, -87.6298],
+    population: 2720546
+  },
+  {
+    name: "Houston",
+    location: [29.7604, -95.3698],
+    population: 2296224
+  },
+  {
+    name: "Los Angeles",
+    location: [34.0522, -118.2437],
+    population: 3971883
+  },
+  {
+    name: "Omaha",
+    location: [41.2524, -95.9980],
+    population: 446599
+  }
+];
+
 // An array which will be used to store created cityMarkers
 var cityMarkers = [];
 
@@ -28,10 +56,22 @@ for (var i = 0; i < cities.length; i++) {
   );
 }
 
+
+//do the same for other cities
+var otherCityMarkers = [];
+
+for (var i = 0; i < otherCities.length; i++) {
+  // loop through the cities array, create a new marker, push it to the cityMarkers array
+  otherCityMarkers.push(
+    L.marker(otherCities[i].location).bindPopup("<h1>" + otherCities[i].name + "</h1>")
+  );
+}
 // Add all the cityMarkers to a new layer group.
 // Now we can handle them as one group instead of referencing each individually
 var cityLayer = L.layerGroup(cityMarkers);
 
+// do the same for othercities
+var othercityLayer = L.layerGroup(otherCityMarkers);
 // Define variables for our tile layers
 var light = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
   attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
@@ -55,7 +95,8 @@ var baseMaps = {
 
 // Overlays that may be toggled on or off
 var overlayMaps = {
-  Cities: cityLayer
+  Cities: cityLayer,
+  "Other Cities": othercityLayer
 };
 
 // Create map object and set default layers
